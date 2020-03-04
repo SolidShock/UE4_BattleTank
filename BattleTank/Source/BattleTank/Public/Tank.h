@@ -19,6 +19,9 @@ public:
 	void AimAt(FVector HitLocation);
 
 	UFUNCTION(BlueprintCallable, Category = Setup)
+	void SetTurretRefrence(UTankTurret* TurretToSet);
+
+	UFUNCTION(BlueprintCallable, Category = Setup)
 	void SetBarrelRefrence(UTankBarrel* BarrelToSet);
 
 protected:

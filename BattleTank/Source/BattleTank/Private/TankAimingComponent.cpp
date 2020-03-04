@@ -2,6 +2,7 @@
 
 
 #include "TankAimingComponent.h"
+#include "TankTurret.h"
 #include "TankBarrel.h"
 
 // Sets default values for this component's properties
@@ -24,6 +25,10 @@ void UTankAimingComponent::BeginPlay()
 	
 }
 
+void UTankAimingComponent::SetTurretRefrence(UTankTurret* TurretToSet)
+{
+	Turret = TurretToSet;
+}
 
 void UTankAimingComponent::SetBarrelRefrence(UTankBarrel* BarrelToSet)
 {
