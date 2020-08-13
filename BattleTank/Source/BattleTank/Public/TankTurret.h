@@ -7,9 +7,7 @@
 #include "Math/UnrealMathUtility.h"
 #include "TankTurret.generated.h"
 
-/**
- * 
- */
+
 UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class BATTLETANK_API UTankTurret : public UStaticMeshComponent
 {
