@@ -19,8 +19,11 @@ public:
     virtual void Tick(float DeltaTime) override;
     virtual void BeginPlay() override;
 
-private:
+protected:
+    UFUNCTION(BlueprintCallable, Category = "Setup")
     ATank* GetControlledTank() const;
+
+private:
     void AimTowardsCrosshair();
     bool GetSightRayHitLocation(FVector &OutHitLocation) const;
     bool GetLookDirection(FVector2D ScreenLocation, FVector& LookDirection) const;
