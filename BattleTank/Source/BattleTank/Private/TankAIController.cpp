@@ -25,5 +25,5 @@ void ATankAIController::Tick(float DeltaTime)
 
 	AimingComponent->AimAt(PlayerTank->GetActorLocation());
 
-	//AimingComponent->Fire(); // TODO Add Delay and fix it
+	AimingComponent->Fire();
 }

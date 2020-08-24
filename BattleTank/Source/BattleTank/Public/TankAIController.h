@@ -8,8 +8,6 @@
 #include "GameFramework/Actor.h"
 #include "TankAIController.generated.h"
 
-class ATank;
-
 UCLASS()
 class BATTLETANK_API ATankAIController : public AAIController
 {
@@ -18,9 +16,4 @@ class BATTLETANK_API ATankAIController : public AAIController
 public:
 	virtual void BeginPlay() override;
 	virtual void Tick(float DeltaTime) override;
-
-	ATank* ControlledTank = nullptr;
-	ATank* PlayerTank = nullptr;
-
-private:
 };
