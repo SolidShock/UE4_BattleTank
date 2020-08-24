@@ -24,19 +24,23 @@ class BATTLETANK_API UTankAimingComponent : public UActorComponent
 public:	
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 	
-	void AimAt(FVector HitLocation, float LaunchSpeed);
+	void AimAt(FVector HitLocation);
 
 	UFUNCTION(BlueprintCallable, Category = Setup)
 	void Initialise(UTankTurret* TurretToSet, UTankBarrel* BarrelToSet);
 
 protected:
 	UPROPERTY(BlueprintReadOnly, Category = "State")
-	EFiringState FiringState = EFiringState::Reloading;
+	EFiringState FiringState = EFiringState::Aiming;
 	
 private:
 	UTankAimingComponent();
 	UTankTurret* Turret = nullptr;
 	UTankBarrel* Barrel = nullptr;
+
+	UPROPERTY(EditAnywhere, Category = Firing)
+	float LaunchSpeed = 100000;
+
 	void MoveTurretTowards(FVector AimDirection);	
 	void MoveBarrelTowards(FVector AimDirection);
 };
