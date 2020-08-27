@@ -27,6 +27,8 @@ public:
 
 	void AimAt(FVector HitLocation);
 
+	bool bIsBarrelMoving();
+
 	UFUNCTION(BlueprintCallable, Category = Setup)
 	void Initialise(UTankTurret* TurretToSet, UTankBarrel* BarrelToSet);
 
@@ -56,6 +58,7 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")
 	float ReloadTimeInSeconds = 3;
 
-
 	double LastFireTime = 0;
+
+	FVector AimDirection;
 };
