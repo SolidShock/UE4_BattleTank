@@ -22,9 +22,9 @@ class BATTLETANK_API UTankAimingComponent : public UActorComponent
 {
 	GENERATED_BODY()
 
-public:	
-	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
-	
+public:
+	virtual void BeginPlay() override;
+
 	void AimAt(FVector HitLocation);
 
 	UFUNCTION(BlueprintCallable, Category = Setup)
@@ -35,10 +35,13 @@ public:
 
 protected:
 	UPROPERTY(BlueprintReadOnly, Category = "State")
-	EFiringState FiringState = EFiringState::Aiming;
+	EFiringState FiringState = EFiringState::Reloading;
 	
 private:
 	UTankAimingComponent();
+
+	virtual void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+
 	UTankTurret* Turret = nullptr;
 	UTankBarrel* Barrel = nullptr;
 	void MoveTurretTowards(FVector AimDirection);
