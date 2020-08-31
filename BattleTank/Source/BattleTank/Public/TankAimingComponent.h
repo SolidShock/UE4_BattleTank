@@ -47,7 +47,6 @@ private:
 	UTankTurret* Turret = nullptr;
 	UTankBarrel* Barrel = nullptr;
 	void MoveTurretTowards(FVector AimDirection);
-	void MoveBarrelTowards(FVector AimDirection);
 
 	UPROPERTY(EditAnywhere, Category = "Setup")
 	TSubclassOf<AProjectile> ProjectileBlueprint;
