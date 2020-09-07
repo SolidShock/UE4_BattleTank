@@ -23,6 +23,8 @@ protected:
     void FoundAimingComponent(UTankAimingComponent* AimCompRef);
 
 private:
+    virtual void SetPawn(APawn* InPawn) override;
+
     void AimTowardsCrosshair();
     bool GetSightRayHitLocation(FVector &OutHitLocation) const;
     bool GetLookDirection(FVector2D ScreenLocation, FVector& LookDirection) const;
@@ -39,4 +41,7 @@ private:
 
     UPROPERTY(EditAnywhere)
     float LineTraceRange = 1000000.0f;
+
+    UFUNCTION()
+    void OnDeath();
 };

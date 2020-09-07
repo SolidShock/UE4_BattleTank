@@ -3,10 +3,23 @@
 #include "Tank.h"
 #include "TankAimingComponent.h"
 #include "TankAIController.h"
+#include "GameFramework/Pawn.h"
 
 void ATankAIController::BeginPlay()
 {
 	Super::BeginPlay();
+}
+
+void ATankAIController::SetPawn(APawn* InPawn)
+{
+	Super::SetPawn(InPawn);
+	if (InPawn)
+	{
+		auto PossesedTank = Cast<ATank>(InPawn);
+		if (!ensure(PossesedTank)) { return; }
+
+		PossesedTank->OnTankDeath.AddUniqueDynamic(this, &ATankAIController::OnDeath);
+	}
 }
 
 void ATankAIController::Tick(float DeltaTime)
@@ -16,8 +29,7 @@ void ATankAIController::Tick(float DeltaTime)
 	auto ControlledTank = GetPawn();
 
 	if (!ensure(PlayerTank && ControlledTank)) { return; }
-	
-	//TODO Move towards the player
+
 	MoveToActor(PlayerTank, AcceptanceRadius);
 
 	auto AimingComponent = ControlledTank->FindComponentByClass<UTankAimingComponent>();
@@ -29,4 +41,11 @@ void ATankAIController::Tick(float DeltaTime)
 	{
 		AimingComponent->Fire();
 	}
+}
+
+void ATankAIController::OnDeath()
+{
+	if (!GetPawn()) { return; }
+	GetPawn()->DetachFromControllerPendingDestroy();
+	UE_LOG(LogTemp, Warning, TEXT("I've received your message!"));
 }
