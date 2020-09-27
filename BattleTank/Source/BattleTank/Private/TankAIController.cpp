@@ -47,5 +47,4 @@ void ATankAIController::OnDeath()
 {
 	if (!GetPawn()) { return; }
 	GetPawn()->DetachFromControllerPendingDestroy();
-	UE_LOG(LogTemp, Warning, TEXT("I've received your message!"));
 }
